@@ -16,7 +16,7 @@ const SinglePage = React.lazy(() => import("./pages/SinglePage/SinglePage"));
 const WritePage = React.lazy(() => import("./pages/WritePage/WritePage"));
 
 function App() {
-  const currentUser = true;
+  const currentUser = false;
   return (
     <Suspense fallback="Getting the data....">
       <Router>

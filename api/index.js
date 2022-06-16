@@ -14,7 +14,7 @@ const app = express();
 app.use(express.json());
 dotenv.config();
 
-const PORT = process.env.PORT || "9000";
+const PORT = process.env.PORT || "5000";
 
 //db connection
 mongoose
