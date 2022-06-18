@@ -6,7 +6,8 @@ import TopBar from "./components/TopBar/TopBar";
 // import SinglePage from "./pages/SinglePage/SinglePage";
 // import WritePage from "./pages/WritePage/WritePage";
 import { BrowserRouter as Router, Routes, Route } from "react-router-dom";
-import React, { Suspense } from "react";
+import React, { Suspense, useContext } from "react";
+import { Context } from "./context/Context";
 
 const HomePage = React.lazy(() => import("./pages/Home/Home"));
 const LoginPage = React.lazy(() => import("./pages/Login/Login"));
@@ -16,31 +17,39 @@ const SinglePage = React.lazy(() => import("./pages/SinglePage/SinglePage"));
 const WritePage = React.lazy(() => import("./pages/WritePage/WritePage"));
 
 function App() {
-  const currentUser = false;
+  const { user } = useContext(Context);
   return (
-    <Suspense fallback="Getting the data....">
+    <Suspense fallback="oops!....">
       <Router>
         <TopBar />
         <Routes>
-          <Route exact path="/"></Route>
-          <Route path="/posts" element={<HomePage />}></Route>
+          <Route
+            exact
+            path="/"
+            element={user ? <HomePage /> : <LoginPage />}
+          ></Route>
+          {/* <Route path="/posts" element={<HomePage />}></Route> */}
           <Route
             path="/register"
-            element={currentUser ? <HomePage /> : <RegisterPage />}
+            element={user ? <HomePage /> : <RegisterPage />}
           ></Route>
-          <Route
+
+          {/* <Route
             path="/login"
-            element={currentUser ? <HomePage /> : <LoginPage />}
-          ></Route>
-          <Route path="/post/:id" element={<SinglePage />}></Route>
+            element={user ? <HomePage /> : <LoginPage />}
+          ></Route> */}
+
           <Route
             path="/write"
-            element={currentUser ? <WritePage /> : <LoginPage />}
+            element={user ? <WritePage /> : <LoginPage />}
           ></Route>
+
           <Route
             path="/settings"
-            element={currentUser ? <SettingPage /> : <LoginPage />}
+            element={user ? <SettingPage /> : <RegisterPage />}
           ></Route>
+
+          <Route path="/post/:id" element={<SinglePage />}></Route>
         </Routes>
       </Router>
     </Suspense>

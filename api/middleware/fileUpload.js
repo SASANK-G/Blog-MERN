@@ -5,7 +5,7 @@ const uploadMiddle = () => {
       cb(null, "images");
     },
     filename: (req, file, cb) => {
-      cb(null, "mypic99.jpg");
+      cb(null, req.body.name);
     },
   });
 

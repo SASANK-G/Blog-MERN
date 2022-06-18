@@ -5,10 +5,10 @@ const authRoute = require("./routes/auth");
 const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
-const multer = require("multer");
+// const multer = require("multer");
 
 const fileRoute = require("./routes/file");
-// const path = require("path");
+const path = require("path");
 
 const app = express();
 app.use(express.json());
@@ -28,12 +28,12 @@ mongoose
 //     cb(null, "images");
 //   },
 //   filename: (req, file, cb) => {
-//     cb(null, "mypic3.jpg");
+//     cb(null, req.body.name);
 //   },
 // });
 
 // const upload = multer({ storage: storage });
-// app.post("/api/upload", uploadMiddle(), (req, res) => {
+// app.post("/api/upload", upload.single("file"), (req, res) => {
 //   try {
 //     res.status(200).json("File has been uploaded");
 //   } catch (err) {
@@ -41,13 +41,14 @@ mongoose
 //   }
 // });
 
-// app.use("/images", express.static(path.join(__dirname, "/images")));
 //routes
 app.use("/api/auth", authRoute);
 app.use("/api/users", userRoute);
 app.use("/api/posts", postRoute);
 app.use("/api/categories", categoryRoute);
 app.use("/api/upload", fileRoute);
+//path
+app.use("/images", express.static(path.join(__dirname, "/images")));
 
 app.listen(PORT, () => {
   console.log(`Server is listening at http://localhost:${PORT}`);
