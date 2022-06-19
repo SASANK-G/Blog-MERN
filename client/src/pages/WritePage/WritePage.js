@@ -3,6 +3,7 @@ import { BsFileEarmarkPlus } from "react-icons/bs";
 import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import React from "react";
 
 export default function WritePage() {
   const [title, setTitle] = useState("");

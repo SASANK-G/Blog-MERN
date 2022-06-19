@@ -3,6 +3,7 @@ import { Link } from "react-router-dom";
 import { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
+import React from "react";
 
 export default function Login() {
   const userRef = useRef();
@@ -20,6 +21,7 @@ export default function Login() {
       dispatch({ type: "LOGIN_SUCCESS", payload: res.data });
     } catch (err) {
       dispatch({ type: "LOGIN_FAILURE" });
+      console.log(err);
     }
   };
 

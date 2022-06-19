@@ -1,4 +1,5 @@
 import "./Posts.css";
+import React from "react";
 import Post from "../Post/Post";
 
 function Posts({ posts }) {

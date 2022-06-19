@@ -5,6 +5,7 @@ import Sidebar from "../../components/Sidebar/Sidebar";
 import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
+import React from "react";
 
 function Home() {
   const [posts, setPosts] = useState([]);
