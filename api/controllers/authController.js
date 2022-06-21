@@ -20,10 +20,18 @@ async function authRegister(req, res) {
 async function authLogin(req, res) {
   try {
     const user = await User.findOne({ username: req.body.username });
-    !user && res.status(400).json("Wrong credentials!");
+    // !user && res.status(400).json("Wrong credentials!");
+    if (!user) {
+      res.status(400).json("Wrong credentials!");
+      return;
+    }
 
     const validated = await bcrypt.compare(req.body.password, user.password);
-    !validated && res.status(400).json("Wrong credentials!");
+    // !validated && res.status(400).json("Wrong credentials!");
+    if (!validated) {
+      res.status(400).json("Wrong credentials!");
+      return;
+    }
 
     //return other params except password
     const { password, ...others } = user._doc;

@@ -3,7 +3,7 @@ const commonConfig = require("./webpack.common");
 
 const devConfig = {
   mode: "development",
-  devtool: "cheap-source-map",
+  devtool: "inline-source-map",
   devServer: {
     static: "./dist",
   },

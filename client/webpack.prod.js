@@ -3,4 +3,7 @@ const commonConfig = require("./webpack.common.js");
 
 module.exports = merge(commonConfig, {
   mode: "production",
+  devServer: {
+    static: "./dist",
+  },
 });

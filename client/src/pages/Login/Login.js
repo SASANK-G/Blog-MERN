@@ -4,6 +4,7 @@ import { useContext, useRef } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import React from "react";
+import API from "../../api";
 
 export default function Login() {
   const userRef = useRef();
@@ -14,7 +15,7 @@ export default function Login() {
     e.preventDefault();
     dispatch({ type: "LOGIN_START" });
     try {
-      const res = await axios.post("/auth/login", {
+      const res = await API.post("/auth/login", {
         username: userRef.current.value,
         password: passwordRef.current.value,
       });

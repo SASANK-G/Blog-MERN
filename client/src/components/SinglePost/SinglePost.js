@@ -5,6 +5,7 @@ import { useContext, useEffect, useState } from "react";
 import axios from "axios";
 import { Context } from "../../context/Context";
 import React from "react";
+import API from "../../api";
 
 export default function SinglePost() {
   const location = useLocation();
@@ -19,7 +20,7 @@ export default function SinglePost() {
 
   useEffect(() => {
     const getPost = async () => {
-      const res = await axios.get("/posts/" + path);
+      const res = await API.get("/posts/" + path);
       // console.log(res);
       setPost(res.data);
       setTitle(res.data.title);

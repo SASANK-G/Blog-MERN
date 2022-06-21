@@ -6,15 +6,16 @@ import { useLocation } from "react-router";
 import { useEffect, useState } from "react";
 import axios from "axios";
 import React from "react";
+import API from "../../api";
 
 function Home() {
   const [posts, setPosts] = useState([]);
   const { search } = useLocation();
-  console.log("home>>>>>>>>>", search);
+  // console.log("home>>>>>>>>>", search);
 
   useEffect(() => {
     const fetchPosts = async () => {
-      const res = await axios.get("/posts" + search);
+      const res = await API.get("/posts" + search);
       // console.log("result", res);
       setPosts(res.data);
     };

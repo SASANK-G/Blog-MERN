@@ -6,12 +6,14 @@ const userRoute = require("./routes/users");
 const postRoute = require("./routes/posts");
 const categoryRoute = require("./routes/categories");
 // const multer = require("multer");
+const cors = require("cors");
 
 const fileRoute = require("./routes/file");
 const path = require("path");
 
 const app = express();
 app.use(express.json());
+app.use(cors());
 dotenv.config();
 
 const PORT = process.env.PORT || "5000";

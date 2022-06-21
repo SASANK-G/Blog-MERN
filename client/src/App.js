@@ -34,10 +34,7 @@ function App() {
             element={user ? <HomePage /> : <RegisterPage />}
           ></Route>
 
-          {/* <Route
-            path="/login"
-            element={user ? <HomePage /> : <LoginPage />}
-          ></Route> */}
+          <Route path="/login" element={<LoginPage />}></Route>
 
           <Route
             path="/write"

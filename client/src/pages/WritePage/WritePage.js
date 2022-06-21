@@ -4,6 +4,7 @@ import { useContext, useState } from "react";
 import { Context } from "../../context/Context";
 import axios from "axios";
 import React from "react";
+import API from "../../api";
 
 export default function WritePage() {
   const [title, setTitle] = useState("");
@@ -28,13 +29,13 @@ export default function WritePage() {
       data.append("file", file);
       newPost.photo = filename;
       try {
-        await axios.post("/upload", data);
+        await API.post("/upload", data);
       } catch (err) {
         console.log(err);
       }
     }
     try {
-      const res = await axios.post("/posts", newPost);
+      const res = await API.post("/posts", newPost);
       //after uploading post navigate to post page with id
       window.location.replace("/post/" + res.data._id);
     } catch (err) {

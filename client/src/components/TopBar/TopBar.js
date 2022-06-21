@@ -49,9 +49,12 @@ function TopBar() {
       </div>
       <div className="topRight">
         {user ? (
-          <Link className="link" to="/settings">
-            <img className="topImg" src={PF + user.profilePic} alt="" />
-          </Link>
+          <>
+            <Link className="link" to="/settings">
+              <img className="topImg" src={PF + user.profilePic} alt="" />
+            </Link>
+            <FaSearch className="topSearchIcon" />
+          </>
         ) : (
           <ul className="topList">
             <li className="topListItem">
@@ -66,7 +69,6 @@ function TopBar() {
             </li>
           </ul>
         )}
-        <FaSearch className="topSearchIcon" />
       </div>
     </div>
   );
